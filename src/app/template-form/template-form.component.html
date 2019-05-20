@@ -1,0 +1,90 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form-horizontal">
+
+  <h2>Cadastro Item</h2>
+  <div class="form-group" [ngClass]="aplicaCssErro('item')">
+
+    <div class="col-sm-12">
+      <label for="item" class="control-label">Descrição Item</label>
+    </div>
+
+    <div class="col-sm-12">
+      <input type="text" class="form-control" formControlName="item" id="item" placeholder="Descrição item">
+
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('item')" msgErro="Item é obrigatório.">
+      </app-campo-control-erro>
+    </div>
+  </div>
+
+  <div class="form-group">
+
+    <div class="col-md-3" [ngClass]="aplicaCssErro('selectUnid')">
+      <label for="selectUnid" class="control-label">Unidade de Medida</label>
+      <p-dropdown [options]="unidValues" id="selectUnid" formControlName="selectUnid">></p-dropdown>
+
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('selectUnid')"
+        msgErro="Unidade de Medida é obrigatória.">
+      </app-campo-control-erro>
+    </div>
+
+    <div class="col-md-3">
+      <label for="quantity" class="control-label">Quantidade</label>
+      <input type="number" class="form-control" id="quantity" formControlName="quantity">
+    </div>
+
+
+    <div class="col-md-3" [ngClass]="aplicaCssErro('price')">
+      <label for="price" class="control-label">Preço</label>
+      <input type="number" class="form-control" id="price" formControlName="price">
+
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('price')" msgErro="Preço é obrigatório.">
+      </app-campo-control-erro>
+    </div>
+
+    <div class="col-md-3" [ngClass]="aplicaCssErro('perishable')">
+      <div class="checkbox">
+        <label class="checkbox-inline">
+          <p-checkbox value="perishable" label="Produto Perecível" formControlName="perishable"></p-checkbox>
+        </label>
+      </div>
+
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('perishable')"
+        msgErro="Produto Perecível é obrigatório.">
+      </app-campo-control-erro>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-3" [ngClass]="aplicaCssErro('dateValid')">
+      <label for="dateValid" class="control-label">Data de Validade</label>
+      <input type="date" class="form-control" id="dateValid" formControlName="dateValid">
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('dateValid')"
+        msgErro="Data de Validade é obrigatória.">
+      </app-campo-control-erro>
+    </div>
+
+    <div class="col-md-3" [ngClass]="aplicaCssErro('dateFabrication')">
+      <label for="dateFabrication" class="control-label">Data de Fabricação</label>
+      <input type="date" class="form-control" id="dateFabrication" formControlName="dateFabrication">
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('dateFabrication')"
+        msgErro="Data de Fabricação é obrigatória.">
+      </app-campo-control-erro>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-1">
+      <button type="submit" class="btn btn-primary">Confirmar</button>
+    </div>
+
+    <div class="col-sm-1">
+      <div><button class="btn btn-primary" (click)="cancelItem()">Cancelar</button></div>
+    </div>
+
+  </div>
+
+
+
+
+</form>
